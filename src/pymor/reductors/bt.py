@@ -2,6 +2,8 @@
 # Copyright 2013-2020 pyMOR developers and contributors. All rights reserved.
 # License: BSD 2-Clause License (http://opensource.org/licenses/BSD-2-Clause)
 
+from functools import lru_cache
+
 import numpy as np
 import scipy.linalg as spla
 
@@ -157,6 +159,7 @@ class LQGBTReductor(GenericBTReductor):
         super().__init__(fom, mu=mu)
         self.solver_options = solver_options
 
+    @lru_cache
     def _gramians(self):
         A, B, C, E = (getattr(self.fom, op).assemble(mu=self.mu)
                       for op in ['A', 'B', 'C', 'E'])
@@ -196,6 +199,7 @@ class BRBTReductor(GenericBTReductor):
         self.gamma = gamma
         self.solver_options = solver_options
 
+    @lru_cache
     def _gramians(self):
         A, B, C, E = (getattr(self.fom, op).assemble(mu=self.mu)
                       for op in ['A', 'B', 'C', 'E'])
