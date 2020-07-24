@@ -22,6 +22,9 @@ def get_visualizer(backend='MPL'):
     if backend == 'py3js' and config.HAVE_PYTHREEJS:
         from pymor.discretizers.builtin.gui.jupyter.threejs import visualize_py3js
         return visualize_py3js
+    elif backend == 'ngsolve' and config.HAVE_NGSOLVE:
+        from pymor.discretizers.builtin.gui.jupyter.ngsolve import visualize_ngsolve
+        return visualize_ngsolve
     else:
         return visualize_patch
 
