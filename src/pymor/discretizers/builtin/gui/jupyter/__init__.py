@@ -15,6 +15,7 @@ import IPython
 from pymor.core.defaults import defaults
 from pymor.discretizers.builtin.gui.jupyter.matplotlib import visualize_patch
 from pymor.core.config import config
+from pymor.core.logger import getLogger
 
 
 @defaults('backend')
@@ -26,6 +27,8 @@ def get_visualizer(backend='MPL'):
         from pymor.discretizers.builtin.gui.jupyter.ngsolve import visualize_ngsolve
         return visualize_ngsolve
     else:
+        if backend != 'MPL':
+            getLogger().warn(f'Selected Jupyter Visualization Backend "{backend}" not available. Falling back to "MPL"')
         return visualize_patch
 
 
