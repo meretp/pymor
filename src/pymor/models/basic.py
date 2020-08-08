@@ -2,13 +2,9 @@
 # Copyright 2013-2020 pyMOR developers and contributors. All rights reserved.
 # License: BSD 2-Clause License (http://opensource.org/licenses/BSD-2-Clause)
 
-import numpy as np
-
 from pymor.algorithms.timestepping import TimeStepper
 from pymor.models.interface import Model
 from pymor.operators.constructions import VectorOperator
-from pymor.parameters.base import Parameters
-from pymor.tools.formatrepr import indent_value
 from pymor.vectorarrays.interface import VectorArray
 
 
